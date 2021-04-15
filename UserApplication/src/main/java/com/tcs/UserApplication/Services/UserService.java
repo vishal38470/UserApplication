@@ -5,9 +5,9 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.tcs.UserApplication.Entities.UserEntity;
+import com.tcs.UserApplication.Exception.UserNotFoundException;
 import com.tcs.UserApplication.Repository.UserRepository;
 
 @Service
@@ -24,8 +24,11 @@ public class UserService {
 		return userRepo.save(user);
 	}
 	
-    public Optional<UserEntity> getUserById(Long id ) {
+    public Optional<UserEntity> getUserById(Long id ) throws UserNotFoundException{
     	Optional<UserEntity> user = userRepo.findById(id);
+    	if(!user.isPresent()) {
+    		throw new UserNotFoundException("User not found Exception from getUserById method");
+    		}
     	return user;
     }
 
