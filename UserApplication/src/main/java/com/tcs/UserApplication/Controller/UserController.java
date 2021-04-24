@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,9 @@ import com.tcs.UserApplication.Entities.UserEntity;
 import com.tcs.UserApplication.Exception.UserExistException;
 import com.tcs.UserApplication.Exception.UserNotFoundException;
 import com.tcs.UserApplication.Services.UserService;
+
+import javax.validation.Valid;
+
 @CrossOrigin
 @RestController
 public class UserController {
@@ -36,7 +40,7 @@ public class UserController {
 	} 
 	  @CrossOrigin
 	  @PostMapping("/users")
-	  public ResponseEntity<Void> createUser(@RequestBody UserEntity user,UriComponentsBuilder builder) {
+	  public ResponseEntity<Void> createUser(@Valid  @RequestBody UserEntity user, UriComponentsBuilder builder) throws UserExistException {
 		  
 		  try {
 			 service.createUser(user);
@@ -46,7 +50,7 @@ public class UserController {
 			
 		} catch (UserExistException e) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST,e.getMessage());
-		}  
+		}
 		     
 	  }      
 	  @GetMapping("/users/{id}")
