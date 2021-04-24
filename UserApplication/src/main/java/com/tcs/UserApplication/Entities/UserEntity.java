@@ -1,10 +1,12 @@
 package com.tcs.UserApplication.Entities;
-
+//import javax.validation.contstraints.NotEmpty;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name="User_Table")
@@ -13,9 +15,11 @@ public class UserEntity {
     @GeneratedValue
 	private Long ID ;
     
+    @NotEmpty(message="Username canot be empty")
     @Column(name="user_name", length=50,nullable=false,unique=true)
 	private String username;
     
+    @Size(min=2,message="First name should be minimum of 2 letter")
     @Column(name="first_name", length=50,nullable=false)
 	private String firstName;
     
