@@ -1,3 +1,5 @@
+package com.tcs.UserApplication.Exception;
+
 import java.util.Date;
 
 import org.springframework.http.HttpHeaders;
@@ -17,13 +19,12 @@ import com.tcs.UserApplication.Exception.CustomErrorDetails;
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler{
 
 	//MethodArgumentNotValidException
-	@ExceptionHandler
 	@Override
 	protected ResponseEntity<Object> handleMethodArgumentNotValid(
 			MethodArgumentNotValidException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
 
 		CustomErrorDetails methodArgumentNotValid= new 
-				CustomErrorDetails(new Date(), "In valid arguments has been passed", ex.getMessage()
+				CustomErrorDetails(new Date(), "Invalid arguments has been passed", ex.getMessage()
 						);
 		  
 	return new ResponseEntity<Object>(methodArgumentNotValid,HttpStatus.BAD_REQUEST);
