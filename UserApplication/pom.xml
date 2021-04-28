@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.tcs</groupId>
 	<artifactId>UserApplication</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1-SNAPSHOT</version>   
 	<name>UserApplication</name>
 	<description>WebApplication for users </description>
 	<properties>
@@ -48,7 +48,7 @@
 		</dependency>
 	</dependencies>
 
-	<build>
+	<build>  
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
