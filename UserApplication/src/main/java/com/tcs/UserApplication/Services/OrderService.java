@@ -19,7 +19,7 @@ public class OrderService {
 
 	
 	@Autowired  
-	OrderRepository orderRepo;
+	OrderRepository orderRepo;   
 	
 	@Autowired  
 	UserRepository userRepo;
