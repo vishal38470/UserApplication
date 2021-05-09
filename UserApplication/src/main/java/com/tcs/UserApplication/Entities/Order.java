@@ -3,6 +3,7 @@ package com.tcs.UserApplication.Entities;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -13,9 +14,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Component
 @Entity
 @Table(name="orders")
-public class Order {
+public class Order extends ResourceSupport{
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long orderid;
 	
 	

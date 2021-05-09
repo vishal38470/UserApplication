@@ -25,6 +25,12 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+		
+	<dependency>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-hateoas</artifactId>
+    </dependency>
+
 		<!-- For spring boot version greater than 2.3.0 this dependency is needed instead of javax.validation dependency -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
