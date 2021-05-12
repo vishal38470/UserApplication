@@ -8,13 +8,14 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import org.springframework.hateoas.RepresentationModel;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 @Component
 @Entity
 @Table(name="orders")
-public class Order extends ResourceSupport{
+public class Order extends RepresentationModel{
 	@Id
 	@GeneratedValue(strategy = GenerationType.TABLE)
 	private Long orderid;

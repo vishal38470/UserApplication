@@ -9,11 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.Size;  
+import javax.validation.constraints.Size;
+
+import org.springframework.hateoas.RepresentationModel;  
 
 @Entity
 @Table(name="User_Table")
-public class UserEntity {
+public class UserEntity extends RepresentationModel{
     @Id 
     @GeneratedValue
 	private Long ID ;
