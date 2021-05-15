@@ -2,7 +2,7 @@ package com.tcs.UserApplication.Entities;
 import java.util.List;
 
 //import javax.validation.contstraints.NotEmpty;
-import javax.persistence.Column;  
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -11,36 +11,48 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-import org.springframework.hateoas.RepresentationModel;  
+import org.springframework.hateoas.RepresentationModel;
 
+import com.fasterxml.jackson.annotation.JsonFilter;
+import com.fasterxml.jackson.annotation.JsonView;  
+
+
+//@JsonFilter(value="userFilter")
 @Entity
 @Table(name="User_Table")
 public class UserEntity extends RepresentationModel{
     @Id 
-    @GeneratedValue
+    @GeneratedValue  
+    @JsonView(Views.External.class)
 	private Long ID ;
     
     @NotEmpty(message="Username canot be empty")
     @Column(name="user_name", length=50,nullable=false,unique=true)
+    @JsonView(Views.External.class)
 	private String username;    
     
     @Size(min=2,message="First name should be minimum of 2 letter")
     @Column(name="first_name", length=50,nullable=false)
+    @JsonView(Views.External.class)
 	private String firstName;
     
     @Column(name="last_name", length=50,nullable=false)
+    @JsonView(Views.External.class)
 	private String lastName;
     
     @Column(name="email_address", length=50,nullable=false)
+    @JsonView(Views.Internal.class)
 	private String email;
     
+    @JsonView(Views.Internal.class)
     @Column(name="role", length=50,nullable=false)
 	private String role;
     
+    @JsonView(Views.Internal.class)
     @Column(name="SSN", length=50,nullable=false,unique=true)
 	private String SSN;
 
-    
+    @JsonView(Views.Internal.class)
     @OneToMany(mappedBy="userEntity")
     private List<Order> orders;
     

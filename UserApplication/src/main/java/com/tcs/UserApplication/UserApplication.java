@@ -30,7 +30,7 @@ public class UserApplication {
 	public ResourceBundleMessageSource resourceBundleMessageSource() {
 		
 		ResourceBundleMessageSource baseMessageName = new ResourceBundleMessageSource();
-		baseMessageName.setBasenames("messages");
+		baseMessageName.setBasenames("messages");  
 		
 		return baseMessageName;
 		

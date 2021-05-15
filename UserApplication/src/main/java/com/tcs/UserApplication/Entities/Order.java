@@ -12,6 +12,7 @@ import org.springframework.hateoas.RepresentationModel;
 import org.springframework.stereotype.Component;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
 @Component
 @Entity
 @Table(name="orders")
@@ -26,7 +27,7 @@ public class Order extends RepresentationModel{
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonIgnore
 	private UserEntity userEntity;
-
+	@JsonView(Views.Internal.class)
 	public Long getOrderid() {
 		return orderid;
 	}
