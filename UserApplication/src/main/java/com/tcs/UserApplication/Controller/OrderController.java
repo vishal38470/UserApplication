@@ -19,7 +19,6 @@ import com.tcs.UserApplication.Repository.OrderRepository;
 import com.tcs.UserApplication.Repository.UserRepository;
 import com.tcs.UserApplication.Services.OrderService;
 
-@CrossOrigin
 @RestController
 @RequestMapping(value="/users")
 public class OrderController {

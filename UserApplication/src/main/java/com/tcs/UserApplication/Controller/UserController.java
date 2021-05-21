@@ -26,7 +26,6 @@ import com.tcs.UserApplication.Exception.UserExistException;
 import com.tcs.UserApplication.Exception.UserNotFoundException;
 import com.tcs.UserApplication.Services.UserService;
 
-@CrossOrigin
 @RestController
 @RequestMapping(value="/users")
 public class UserController {
@@ -39,7 +38,6 @@ public class UserController {
 		
 		return service.getAllUsers();
 	} 
-	  @CrossOrigin
 	  @PostMapping
 	  public ResponseEntity<Void> createUser(@Valid  @RequestBody UserEntity user, UriComponentsBuilder builder) throws UserExistException {
 		  
