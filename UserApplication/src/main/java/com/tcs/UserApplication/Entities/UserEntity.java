@@ -56,6 +56,7 @@ public class UserEntity extends RepresentationModel{
     @OneToMany(mappedBy="userEntity")
     private List<Order> orders;
     
+    private String address;
     
 	public List<Order> getOrders() {
 		return orders;
@@ -123,8 +124,20 @@ public class UserEntity extends RepresentationModel{
 
   
 
-	public UserEntity(Long iD, String username, String firstName, String lastName, String email, String role,
-			String sSN) {
+	public UserEntity() {
+	
+	}
+
+	@Override
+	public String toString() {
+		return "UserEntity [ID=" + ID + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", email=" + email + ", role=" + role + ", SSN=" + SSN + ", orders=" + orders + ", address=" + address
+				+ "]";
+	}
+
+	public UserEntity(Long iD, @NotEmpty(message = "Username canot be empty") String username,
+			@Size(min = 2, message = "First name should be minimum of 2 letter") String firstName, String lastName,
+			String email, String role, String sSN, List<Order> orders, String address) {
 		super();
 		ID = iD;
 		this.username = username;
@@ -133,20 +146,19 @@ public class UserEntity extends RepresentationModel{
 		this.email = email;
 		this.role = role;
 		SSN = sSN;
+		this.orders = orders;
+		this.address = address;
 	}
 
-	public UserEntity() {
-	
+	public String getAddress() {
+		return address;
 	}
 
-	@Override
-	public String toString() {
-		return "UserEntity [ID=" + ID + ", username=" + username + ", firstName=" + firstName + ", lastName=" + lastName
-				+ ", email=" + email + ", role=" + role + ", SSN=" + SSN + "]";
+	public void setAddress(String address) {
+		this.address = address;
 	}
 
 
-   // ------------
     
     
 	
