@@ -15,7 +15,7 @@ public class UserApplication {
 		SpringApplication.run(UserApplication.class, args);
 	};
    
-	@Bean
+	@Bean  
 	public AcceptHeaderLocaleResolver localResolver() {
 
 		AcceptHeaderLocaleResolver localeResolver = new AcceptHeaderLocaleResolver();
